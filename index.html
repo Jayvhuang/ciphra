@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ciphra — Free Online Security & Privacy Toolkit (Password, Encrypt, TOTP, Hash)</title>
+<meta name="description" content="Ciphra is a free, bilingual security toolkit that runs 100% in your browser. Generate strong passwords and passphrases, check password strength, encrypt text with AES, compute hashes, generate random values, create usernames, and get TOTP codes. 中文界面可用。" />
+<meta name="keywords" content="password generator, passphrase generator, password strength checker, text encryptor, AES encryption, hash generator, TOTP authenticator, random generator, 密码生成器, 加密, 双重验证" />
+<meta name="author" content="Ciphra" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://ciphra.com/" />
+<link rel="alternate" hreflang="en" href="https://ciphra.com/" />
+<link rel="alternate" hreflang="zh-CN" href="https://ciphra.com/" />
+<link rel="alternate" hreflang="x-default" href="https://ciphra.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ciphra — Free Online Security & Privacy Toolkit" />
+<meta property="og:description" content="Generate passwords, encrypt text with AES, compute hashes, get TOTP codes — all in your browser. No upload, no sign-up. 中文界面可用。" />
+<meta property="og:url" content="https://ciphra.com/" />
+<meta property="og:image" content="https://ciphra.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ciphra — Free Online Security & Privacy Toolkit" />
+<meta name="twitter:description" content="Free, private, bilingual security tools that run in your browser. Generate, encrypt, hash, and authenticate." />
+<meta name="twitter:image" content="https://ciphra.com/og-image.png" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="styles.css" />
+<!-- Google AdSense (Auto Ads) — placeholder, inert until a real account is connected.
+     To go live: replace ca-pub-XXXXXXXXXXXXXX with your real publisher ID and uncomment. -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ciphra",
+  "url": "https://ciphra.com/",
+  "description": "Free, private, bilingual security & privacy toolkit that runs entirely in your browser.",
+  "inLanguage": ["en", "zh-CN"],
+  "potentialAction": { "@type": "SearchAction", "target": "https://ciphra.com/#tool-password", "query-input": "required name=query" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Ciphra Security Tools",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Password Generator", "url": "https://ciphra.com/tools/password-generator.html" },
+    { "@type": "ListItem", "position": 2, "name": "Passphrase Generator", "url": "https://ciphra.com/tools/passphrase-generator.html" },
+    { "@type": "ListItem", "position": 3, "name": "Password Strength Checker", "url": "https://ciphra.com/tools/password-strength.html" },
+    { "@type": "ListItem", "position": 4, "name": "Text Encryptor & Decryptor", "url": "https://ciphra.com/tools/text-encryptor.html" },
+    { "@type": "ListItem", "position": 5, "name": "Hash & Checksum Generator", "url": "https://ciphra.com/tools/hash-generator.html" },
+    { "@type": "ListItem", "position": 6, "name": "Random Generator", "url": "https://ciphra.com/tools/random-generator.html" },
+    { "@type": "ListItem", "position": 7, "name": "Username Generator", "url": "https://ciphra.com/tools/username-generator.html" },
+    { "@type": "ListItem", "position": 8, "name": "TOTP Authenticator", "url": "https://ciphra.com/tools/totp-authenticator.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ciphra",
+  "url": "https://ciphra.com/",
+  "logo": "https://ciphra.com/favicon.svg",
+  "description": "A free, privacy-first, bilingual security & privacy toolkit that runs entirely in your browser."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is my data uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Every Ciphra tool runs entirely in your browser using client-side JavaScript. Passwords, plaintext, and secrets are never uploaded to any server." } },
+    { "@type": "Question", "name": "Is Ciphra free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All eight security tools are completely free, with no account, no watermarks, and no limits." } },
+    { "@type": "Question", "name": "Does Ciphra support Chinese (中文)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Ciphra has a one-click English / 中文 toggle in the header, so the entire interface can be switched to Simplified Chinese." } },
+    { "@type": "Question", "name": "How does the text encryptor work?", "acceptedAnswer": { "@type": "Answer", "text": "The encryptor uses AES-GCM with a key derived from your passphrase via PBKDF2. Everything is computed locally; only the resulting ciphertext leaves your browser when you copy or download it." } },
+    { "@type": "Question", "name": "Which tools are included?", "acceptedAnswer": { "@type": "Answer", "text": "Password generator, passphrase generator, password strength checker, text encryptor/decryptor, hash & checksum generator, random generator, username generator, and a TOTP authenticator." } }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="logo">C</span><span>Ciphra</span></a>
+    <div class="header-actions">
+      <div class="seg" id="lang-seg" role="group" aria-label="Language">
+        <button data-lang-set="en" class="active">EN</button>
+        <button data-lang-set="zh-CN">中文</button>
+      </div>
+      <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme">🌓 <span data-en="Theme" data-zh="主题">Theme</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1><span class="hl" data-en="Security tools that never leave your browser" data-zh="永远不会离开你浏览器的安全工具">Security tools that never leave your browser</span></h1>
+  <p class="sub" data-en="Generate strong passwords, encrypt text with AES, compute hashes, and get TOTP codes — eight private, bilingual tools that run 100% on your device. No upload, no sign-up." data-zh="生成强密码、用 AES 加密文本、计算哈希、获取 TOTP 验证码——八款注重隐私的双语工具，全部在你的设备上运行。无需上传，无需注册。">Generate strong passwords, encrypt text with AES, compute hashes, and get TOTP codes — eight private, bilingual tools that run 100% on your device. No upload, no sign-up.</p>
+  <div class="badges">
+    <span class="badge"><span class="dot"></span><span data-en="Runs 100% in your browser" data-zh="全程在你的浏览器中运行">Runs 100% in your browser</span></span>
+    <span class="badge"><span class="dot"></span><span data-en="No account needed" data-zh="无需注册账号">No account needed</span></span>
+    <span class="badge"><span class="dot"></span><span data-en="AES + Web Crypto" data-zh="AES + Web Crypto">AES + Web Crypto</span></span>
+    <span class="badge"><span class="dot"></span><span data-en="English / 中文" data-zh="英文 / 中文 双语">English / 中文</span></span>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b data-en="Pick a tool" data-zh="选择一个工具">Pick a tool</b><span data-en="Passwords, encryption, hashes, TOTP — all in one place." data-zh="密码、加密、哈希、TOTP——一应俱全。">Passwords, encryption, hashes, TOTP — all in one place.</span></div>
+    <div class="step"><div class="n">2</div><b data-en="Use it locally" data-zh="本地使用">Use it locally</b><span data-en="Everything is computed on your device. Nothing is sent anywhere." data-zh="所有计算都在你的设备上完成，任何数据都不会被发送。">Everything is computed on your device. Nothing is sent anywhere.</span></div>
+    <div class="step"><div class="n">3</div><b data-en="Copy or download" data-zh="复制或下载">Copy or download</b><span data-en="Grab the result and use it wherever you need it." data-zh="获取结果，在你需要的地方使用。">Grab the result and use it wherever you need it.</span></div>
+  </div>
+</section>
+
+<nav class="toolnav">
+  <div class="wrap toolnav-inner" id="toolnav">
+    <button class="tab active" data-tool="password" data-en="Password" data-zh="密码生成">Password</button>
+    <button class="tab" data-tool="passphrase" data-en="Passphrase" data-zh="密语生成">Passphrase</button>
+    <button class="tab" data-tool="strength" data-en="Strength" data-zh="强度检测">Strength</button>
+    <button class="tab" data-tool="encrypt" data-en="Encrypt" data-zh="文本加密">Encrypt</button>
+    <button class="tab" data-tool="hash" data-en="Hash" data-zh="哈希校验">Hash</button>
+    <button class="tab" data-tool="random" data-en="Random" data-zh="随机数">Random</button>
+    <button class="tab" data-tool="username" data-en="Username" data-zh="用户名生成">Username</button>
+    <button class="tab" data-tool="totp" data-en="TOTP" data-zh="动态验证码">TOTP</button>
+  </div>
+</nav>
+
+<main class="wrap studio">
+
+  <!-- 1. PASSWORD -->
+  <section class="tool-panel active panel" data-tool="password" id="tool-password">
+    <div class="panel">
+      <label class="panel-label" data-en="Options" data-zh="选项">Options</label>
+      <div class="row">
+        <span class="opt-label" data-en="Length" data-zh="长度">Length</span>
+        <input type="range" min="4" max="64" value="16" class="range" id="pw-length" />
+        <span id="pw-length-val" class="mono">16</span>
+      </div>
+      <div class="row" style="display:block">
+        <span class="opt-label" data-en="Include" data-zh="包含">Include</span>
+        <div class="checkgroup" style="margin-top:8px">
+          <label><input type="checkbox" id="pw-upper" checked /> <span data-en="Uppercase A-Z" data-zh="大写 A-Z">Uppercase A-Z</span></label>
+          <label><input type="checkbox" id="pw-lower" checked /> <span data-en="Lowercase a-z" data-zh="小写 a-z">Lowercase a-z</span></label>
+          <label><input type="checkbox" id="pw-num" checked /> <span data-en="Numbers 0-9" data-zh="数字 0-9">Numbers 0-9</span></label>
+          <label><input type="checkbox" id="pw-sym" checked /> <span data-en="Symbols !@#" data-zh="符号 !@#">Symbols !@#</span></label>
+        </div>
+      </div>
+      <div class="row"><label class="switch"><input type="checkbox" id="pw-amb" /> <span data-en="Exclude ambiguous (0O1lI)" data-zh="排除易混淆字符 (0O1lI)">Exclude ambiguous (0O1lI)</span></label></div>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="pw-gen" data-en="Generate" data-zh="生成">Generate</button>
+      </div>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><div class="out-big" id="pw-out">—</div></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="pw-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+      <p class="hint" id="pw-hint" data-en="Generated locally with crypto.getRandomValues()." data-zh="使用 crypto.getRandomValues() 在本地生成。">Generated locally with crypto.getRandomValues().</p>
+    </div>
+  </section>
+
+  <!-- 2. PASSPHRASE -->
+  <section class="tool-panel panel" data-tool="passphrase" id="tool-passphrase">
+    <div class="panel">
+      <label class="panel-label" data-en="Options" data-zh="选项">Options</label>
+      <div class="row">
+        <span class="opt-label" data-en="Words" data-zh="词数">Words</span>
+        <input type="number" id="pp-words" min="3" max="12" value="5" />
+      </div>
+      <div class="row">
+        <span class="opt-label" data-en="Separator" data-zh="分隔符">Separator</span>
+        <select id="pp-sep">
+          <option value="-">- (hyphen)</option>
+          <option value=".">. (dot)</option>
+          <option value=" ">␣ (space)</option>
+          <option value="_">_ (underscore)</option>
+        </select>
+      </div>
+      <div class="row"><label class="switch"><input type="checkbox" id="pp-cap" checked /> <span data-en="Capitalize words" data-zh="首字母大写">Capitalize words</span></label></div>
+      <div class="row"><label class="switch"><input type="checkbox" id="pp-num" /> <span data-en="Add a trailing number" data-zh="末尾加数字">Add a trailing number</span></label></div>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="pp-gen" data-en="Generate" data-zh="生成">Generate</button>
+      </div>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><div class="out-big" style="font-size:18px" id="pp-out">—</div></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="pp-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+      <p class="hint" data-en="Diceware-style phrases drawn from a local word list using a secure random source." data-zh="使用安全随机源从本地词表中抽取的密语（diceware 风格）。">Diceware-style phrases drawn from a local word list using a secure random source.</p>
+    </div>
+  </section>
+
+  <!-- 3. STRENGTH -->
+  <section class="tool-panel panel" data-tool="strength" id="tool-strength">
+    <div class="panel">
+      <label class="panel-label" data-en="Enter a password to analyze" data-zh="输入要分析的密码">Enter a password to analyze</label>
+      <input type="text" class="input" id="st-input" placeholder="type or paste a password…" autocomplete="off" />
+      <label class="switch" style="margin-top:10px"><input type="checkbox" id="st-show" /> <span data-en="Show characters" data-zh="显示字符">Show characters</span></label>
+      <p class="hint" data-en="Analysis happens entirely in your browser. Nothing is stored or transmitted." data-zh="分析完全在你的浏览器中进行，任何数据都不会被存储或传输。">Analysis happens entirely in your browser. Nothing is stored or transmitted.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <b id="st-label" data-en="Strength" data-zh="强度">Strength</b>
+          <span id="st-score" class="mono">—</span>
+        </div>
+        <div class="meter"><span id="st-bar"></span></div>
+        <ul class="feedback" id="st-feedback"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ENCRYPT -->
+  <section class="tool-panel panel" data-tool="encrypt" id="tool-encrypt">
+    <div class="panel">
+      <label class="panel-label" data-en="Mode" data-zh="模式">Mode</label>
+      <div class="seg" id="enc-mode" style="margin-bottom:12px">
+        <button data-mode="encrypt" class="active" data-en="Encrypt" data-zh="加密">Encrypt</button>
+        <button data-mode="decrypt" data-en="Decrypt" data-zh="解密">Decrypt</button>
+      </div>
+      <label class="panel-label" data-en="Passphrase" data-zh="口令">Passphrase</label>
+      <input type="password" class="input" id="enc-pass" placeholder="your secret passphrase" autocomplete="off" />
+      <label class="panel-label" style="margin-top:14px" data-en="Text" data-zh="文本">Text</label>
+      <textarea class="input" id="enc-text" placeholder="type or paste text here…"></textarea>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="enc-run" data-en="Run" data-zh="执行">Run</button>
+      </div>
+      <p class="hint" data-en="AES-GCM 256-bit. Key derived with PBKDF2 (SHA-256, 150k iterations). All local." data-zh="AES-GCM 256 位，密钥由 PBKDF2（SHA-256, 15 万次迭代）派生。全程本地。">AES-GCM 256-bit. Key derived with PBKDF2 (SHA-256, 150k iterations). All local.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><pre class="out-pre" id="enc-out">—</pre></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="enc-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HASH -->
+  <section class="tool-panel panel" data-tool="hash" id="tool-hash">
+    <div class="panel">
+      <label class="panel-label" data-en="Algorithm" data-zh="算法">Algorithm</label>
+      <select id="hash-algo" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 10px;background:var(--surface-2);color:var(--text);font-size:14px">
+        <option value="SHA-256">SHA-256</option>
+        <option value="SHA-384">SHA-384</option>
+        <option value="SHA-512">SHA-512</option>
+        <option value="SHA-1">SHA-1 (legacy)</option>
+        <option value="MD5">MD5 (legacy)</option>
+      </select>
+      <label class="panel-label" style="margin-top:14px" data-en="Input" data-zh="输入">Input</label>
+      <textarea class="input" id="hash-input" placeholder="type or paste text to hash…"></textarea>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="hash-run" data-en="Compute hash" data-zh="计算哈希">Compute hash</button>
+      </div>
+      <p class="hint" data-en="SHA family uses the browser Web Crypto API; MD5/SHA-1 are computed locally too." data-zh="SHA 系列使用浏览器 Web Crypto API；MD5/SHA-1 同样在本地计算。">SHA family uses the browser Web Crypto API; MD5/SHA-1 are computed locally too.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><pre class="out-pre" id="hash-out">—</pre></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="hash-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RANDOM -->
+  <section class="tool-panel panel" data-tool="random" id="tool-random">
+    <div class="panel">
+      <label class="panel-label" data-en="Type" data-zh="类型">Type</label>
+      <select id="rnd-type" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 10px;background:var(--surface-2);color:var(--text);font-size:14px">
+        <option value="int" data-en="Integer range" data-zh="整数范围">Integer range</option>
+        <option value="dice" data-en="Dice roll (d6)" data-zh="掷骰子 (d6)">Dice roll (d6)</option>
+        <option value="coin" data-en="Coin flip" data-zh="抛硬币">Coin flip</option>
+        <option value="bytes" data-en="Random bytes (hex)" data-zh="随机字节 (hex)">Random bytes (hex)</option>
+        <option value="uuid" data-en="UUID v4" data-zh="UUID v4">UUID v4</option>
+      </select>
+      <div id="rnd-int-opts">
+        <div class="row"><span class="opt-label" data-en="Min" data-zh="最小">Min</span><input type="number" id="rnd-min" value="1" /></div>
+        <div class="row"><span class="opt-label" data-en="Max" data-zh="最大">Max</span><input type="number" id="rnd-max" value="100" /></div>
+      </div>
+      <div class="row"><span class="opt-label" data-en="Count" data-zh="数量">Count</span><input type="number" id="rnd-count" min="1" max="50" value="6" /></div>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="rnd-gen" data-en="Generate" data-zh="生成">Generate</button>
+      </div>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><pre class="out-pre" id="rnd-out">—</pre></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="rnd-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. USERNAME -->
+  <section class="tool-panel panel" data-tool="username" id="tool-username">
+    <div class="panel">
+      <label class="panel-label" data-en="Style" data-zh="风格">Style</label>
+      <select id="un-style" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 10px;background:var(--surface-2);color:var(--text);font-size:14px">
+        <option value="word" data-en="word + number" data-zh="单词 + 数字">word + number</option>
+        <option value="adj" data-en="adjective_noun" data-zh="形容词_名词">adjective_noun</option>
+        <option value="leet" data-en="leet word" data-zh="极客替换词">leet word</option>
+      </select>
+      <div class="row"><span class="opt-label" data-en="Count" data-zh="数量">Count</span><input type="number" id="un-count" min="1" max="50" value="8" /></div>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" id="un-gen" data-en="Generate" data-zh="生成">Generate</button>
+      </div>
+      <p class="hint" data-en="Great for creating unique handles without reusing personal info." data-zh="适合在不复用个人信息的前提下创建独特昵称。">Great for creating unique handles without reusing personal info.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div class="out-box"><pre class="out-pre" id="un-out">—</pre></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="un-copy" data-en="Copy" data-zh="复制">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TOTP -->
+  <section class="tool-panel panel" data-tool="totp" id="tool-totp">
+    <div class="panel">
+      <label class="panel-label" data-en="Secret (Base32)" data-zh="密钥 (Base32)">Secret (Base32)</label>
+      <input type="text" class="input mono" id="totp-secret" placeholder="JBSWY3DPEHPK3PXP" style="text-transform:uppercase" />
+      <div class="actions" style="margin-top:10px">
+        <button class="btn ghost sm" id="totp-rand" data-en="Random secret" data-zh="随机密钥">Random secret</button>
+      </div>
+      <p class="hint" data-en="RFC 6238 TOTP. Code is computed locally from the secret and the current time." data-zh="RFC 6238 TOTP。验证码由密钥与当前时间在本地计算。">RFC 6238 TOTP. Code is computed locally from the secret and the current time.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div class="totp-code" id="totp-code">------</div>
+        <svg class="totp-ring" width="56" height="56" viewBox="0 0 56 56">
+          <circle class="bg" cx="28" cy="28" r="24"></circle>
+          <circle class="fg" id="totp-ring-fg" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="0"></circle>
+        </svg>
+      </div>
+      <p class="hint" id="totp-note" data-en="Refreshes every 30 seconds." data-zh="每 30 秒刷新一次。">Refreshes every 30 seconds.</p>
+    </div>
+  </section>
+
+</main>
+
+<section class="features wrap">
+  <h2 data-en="Why Ciphra" data-zh="为什么选择 Ciphra">Why Ciphra</h2>
+  <div class="feature-grid">
+    <div class="feature"><div class="ficon">🔒</div><h3 data-en="Private by design" data-zh="隐私优先">Private by design</h3><p data-en="Everything runs locally. Your passwords, plaintext, and secrets never leave the browser tab." data-zh="所有操作都在本地运行，密码、明文与密钥绝不会离开浏览器。">Everything runs locally. Your passwords, plaintext, and secrets never leave the browser tab.</p></div>
+    <div class="feature"><div class="ficon">🌐</div><h3 data-en="Bilingual" data-zh="中英双语">Bilingual</h3><p data-en="Switch between English and 中文 with one click — interface included." data-zh="一键在英文与中文之间切换，界面完整支持。">Switch between English and 中文 with one click — interface included.</p></div>
+    <div class="feature"><div class="ficon">🛡️</div><h3 data-en="Real encryption" data-zh="真正加密">Real encryption</h3><p data-en="Text encryption uses AES-GCM with PBKDF2 key derivation — not a toy cipher." data-zh="文本加密采用 AES-GCM 配合 PBKDF2 密钥派生，并非玩具级加密。">Text encryption uses AES-GCM with PBKDF2 key derivation — not a toy cipher.</p></div>
+    <div class="feature"><div class="ficon">⚡</div><h3 data-en="8 tools, one place" data-zh="8 款工具，一处集成">8 tools, one place</h3><p data-en="Passwords, passphrases, strength, encryption, hashes, random, usernames, TOTP." data-zh="密码、密语、强度检测、加密、哈希、随机数、用户名与 TOTP。">Passwords, passphrases, strength, encryption, hashes, random, usernames, TOTP.</p></div>
+    <div class="feature"><div class="ficon">💸</div><h3 data-en="Free &amp; unlimited" data-zh="免费且不限次">Free &amp; unlimited</h3><p data-en="No sign-up, no watermarks, no usage caps. Open a tool and start." data-zh="无需注册、不加水印、不限次数。打开即用。">No sign-up, no watermarks, no usage caps. Open a tool and start.</p></div>
+    <div class="feature"><div class="ficon">📱</div><h3 data-en="Works everywhere" data-zh="随处可用">Works everywhere</h3><p data-en="Responsive layout that feels native on desktop, tablet, and phone." data-zh="响应式布局，在桌面、平板和手机上都流畅自然。">Responsive layout that feels native on desktop, tablet, and phone.</p></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="logo">C</span><span>Ciphra</span></div>
+        <p class="priv-safe" data-en="A free, privacy-first security toolkit. Everything runs in your browser — your secrets never leave your device." data-zh="免费、注重隐私的安全工具集。所有操作都在你的浏览器中完成——密钥绝不离开你的设备。">A free, privacy-first security toolkit. Everything runs in your browser — your secrets never leave your device.</p>
+      </div>
+      <div>
+        <h4 data-en="Security tools" data-zh="安全工具">Security tools</h4>
+        <ul>
+          <li><a href="index.html#tool-password" data-en="Password generator" data-zh="密码生成器">Password generator</a></li>
+          <li><a href="index.html#tool-encrypt" data-en="Text encryptor" data-zh="文本加密">Text encryptor</a></li>
+          <li><a href="index.html#tool-hash" data-en="Hash generator" data-zh="哈希生成器">Hash generator</a></li>
+          <li><a href="index.html#tool-totp" data-en="TOTP authenticator" data-zh="TOTP 验证器">TOTP authenticator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Legal" data-zh="法律">Legal</h4>
+        <ul>
+          <li><a href="privacy.html" data-en="Privacy Policy" data-zh="隐私政策">Privacy Policy</a></li>
+          <li><a href="index.html" data-en="All tools" data-zh="全部工具">All tools</a></li>
+          <li><a href="https://www.amazon.com/s?k=cybersecurity+books&tag=ciphra-20" target="_blank" rel="sponsored nofollow noopener" data-en="Books on Amazon" data-zh="Amazon 上的图书">Books on Amazon</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure" data-en="As an Amazon Associate, Ciphra earns from qualifying purchases. Some links may be affiliate links. All processing is done locally in your browser; no data is uploaded to our servers. Ciphra is an independent tool and is not affiliated with any security-software brand or service." data-zh="作为 Amazon Associates 会员，Ciphra 可从符合条件的购买中获得收益。部分链接可能为联盟链接。所有处理均在你的浏览器本地完成，数据不会上传到我们的服务器。Ciphra 是独立工具，与任何安全软件品牌或服务无隶属关系。">As an Amazon Associate, Ciphra earns from qualifying purchases. Some links may be affiliate links. All processing is done locally in your browser; no data is uploaded to our servers. Ciphra is an independent tool and is not affiliated with any security-software brand or service.</p>
+    <p class="copyright" data-en="© 2026 Ciphra. Last updated: 2026-07-25." data-zh="© 2026 Ciphra。最后更新：2026-07-25。">© 2026 Ciphra. Last updated: 2026-07-25.</p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
