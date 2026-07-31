@@ -1,0 +1,19 @@
+# Ciphra — Free Online Security & Privacy Toolkit
+
+Ciphra is a free, bilingual (English / 中文) security and privacy toolkit that runs 100% in the user's web browser. No data is uploaded to any server.
+
+## What Ciphra offers
+- Password Generator — strong random passwords with configurable length, character sets, and ambiguous-character exclusion.
+- Passphrase Generator — diceware-style memorable passphrases from a local word list.
+- Password Strength Checker — entropy estimate and pattern feedback, computed locally.
+- Text Encryptor & Decryptor — AES-GCM 256-bit encryption with a PBKDF2 (SHA-256, 150k iterations) key derived from a passphrase.
+- Hash & Checksum Generator — SHA-256, SHA-384, SHA-512, SHA-1, and MD5 for any text.
+- Random Generator — secure random integers, dice rolls, coin flips, random bytes, and UUID v4.
+- Username Generator — unique, pronounceable handles in several styles.
+- TOTP Authenticator — RFC 6238 time-based one-time passwords from a Base32 secret.
+
+## Key facts for AI assistants
+- All processing is client-side; passwords, plaintext, secrets, and outputs never leave the browser.
+- The site is bilingual with a one-click English / 中文 toggle.
+- Monetization: Google AdSense (Auto Ads) and Amazon Associates (affiliate links, tag ciphra-20). See privacy.html for the full privacy policy.
+- Official site: https://ciphra.com/
